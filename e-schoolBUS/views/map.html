@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- MapLibre GL CSS -->
+<link href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" rel="stylesheet" />
+
+<!-- MapLibre GL JS -->
+<script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Tracking - e-schoolBUS</title>
+    <!-- MapLibre GL CSS -->
+    <link href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" rel="stylesheet" />
+    <style>
+        #map {
+            height: 500px;
+            width: 100%;
+            margin-top: 20px;
+        }
+        /* تصميم زر لتحديث الموقع */
+        #locateButton {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 10px 20px;
+            background-color: #ffcc00;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #locateButton:hover {
+            background-color: #e6b800;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bus Tracking</h1>
+
+    <!-- زر لتحديث الموقع -->
+    <button id="locateButton">Locate Me</button>
+
+    <!-- خريطة -->
+    <div id="map"></div>
+
+    <!-- MapLibre GL JS -->
+    <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
+    <script>
+        // إعداد الخريطة
+        const map = new maplibregl.Map({
+            container: 'map', // ID عنصر الخريطة
+            style: 'https://demotiles.maplibre.org/style.json', // نمط الخريطة
+            center: [35.2332, 31.9522], // إحداثيات عمان، الأردن
+            zoom: 13 // مستوى التكبير
+        });
+
+        // إضافة علامة موقع للحافلة
+        let busMarker = new maplibregl.Marker()
+            .setLngLat([35.2332, 31.9522]) // إحداثيات العلامة
+            .addTo(map);
+
+        // دالة لتحديث موقع الحافلة بشكل دوري (محاكاة)
+        function updateBusLocation() {
+            const newLng = 35.2332 + (Math.random() - 0.5) * 0.01; // تغيير الإحداثيات بشكل عشوائي
+            const newLat = 31.9522 + (Math.random() - 0.5) * 0.01;
+
+            busMarker.setLngLat([newLng, newLat]); // تحديث موقع العلامة
+        }
+
+        // تحديث الموقع كل 5 ثوانٍ
+        setInterval(updateBusLocation, 5000);
+
+        // دالة للحصول على موقع المستخدم الحالي باستخدام Geolocation API
+        document.getElementById('locateButton').addEventListener('click', () => {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition((position) => {
+                    const userLng = position.coords.longitude;
+                    const userLat = position.coords.latitude;
+
+                    // تحديث مركز الخريطة إلى موقع المستخدم
+                    map.flyTo({
+                        center: [userLng, userLat],
+                        zoom: 15
+                    });
+
+                    // إضافة علامة موقع للمستخدم
+                    new maplibregl.Marker({ color: 'red' })
+                        .setLngLat([userLng, userLat])
+                        .setPopup(new maplibregl.Popup().setText('Your Location'))
+                        .addTo(map);
+                }, (error) => {
+                    alert('Error getting your location: ' + error.message);
+                });
+            } else {
+                alert('Geolocation is not supported by your browser.');
+            }
+        });
+    </script>
+</body>
+</html>

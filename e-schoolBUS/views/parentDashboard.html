@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Dashboard - e-schoolBUS</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- MapLibre GL CSS -->
+    <link href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" rel="stylesheet" />
+    <!-- Scroll Reveal -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+</head>
+<body>
+    <!-- شريط التنقل -->
+    <nav style="background-color: rgba(0, 0, 0, 0.7); padding: 10px;">
+        <a href="login.html" style="color: #ffcc00; text-decoration: none; margin: 0 15px;"><i class="fas fa-sign-in-alt"></i> Login</a>
+        <a href="register.html" style="color: #ffcc00; text-decoration: none; margin: 0 15px;"><i class="fas fa-user-plus"></i> Register</a>
+        <a href="map.html" style="color: #ffcc00; text-decoration: none; margin: 0 15px;"><i class="fas fa-map-marked-alt"></i> Map</a>
+        <a href="notifications.html" style="color: #ffcc00; text-decoration: none; margin: 0 15px;"><i class="fas fa-bell"></i> Notifications</a>
+    </nav>
+
+    <!-- الشعار -->
+    <header>
+        <img src="/images/logo.png" alt="e-schoolBUS Logo">
+        <h1>Parent Dashboard</h1>
+    </header>
+
+    <!-- رسالة تحميل -->
+    <div id="loadingMessage" style="display: none;">Loading data...</div>
+
+    <!-- رسالة خطأ -->
+    <div id="errorMessage" class="alert alert-error" style="display: none;"></div>
+
+    <!-- حقل البحث -->
+    <div style="margin-bottom: 20px;">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchInput" placeholder="Search by student name or status..." oninput="filterData()">
+    </div>
+
+    <!-- عرض حالة الحضور -->
+    <div id="attendanceStatus" class="reveal-section">
+        <h2><i class="fas fa-user-check"></i> Attendance Status</h2>
+        <p id="studentName">Loading...</p>
+        <p id="attendancePercentage">Loading...</p>
+    </div>
+
+    <!-- عرض التقارير -->
+    <div id="reportsSection" class="reveal-section">
+        <h2><i class="fas fa-calendar-alt"></i> Monthly Attendance Report</h2>
+        <table border="1" id="monthlyReportTable">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- يتم ملء هذا القسم ديناميكيًا باستخدام JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- خريطة تتبع الحافلة -->
+    <div id="map" style="height: 400px; width: 100%; margin-top: 20px;"></div>
+
+    <!-- عرض الإشعارات -->
+    <div id="notificationsSection" class="reveal-section">
+        <h2><i class="fas fa-bell"></i> Notifications</h2>
+        <ul id="notificationsList"></ul>
+    </div>
+
+    <script type="module" src="/js/parentDashboard.js"></script>
+    <script>
+        // Scroll Reveal
+        const sr = ScrollReveal({
+            distance: '50px',
+            duration: 1000,
+            easing: 'ease-in-out',
+            reset: false
+        });
+
+        sr.reveal('.reveal-section', { delay: 200, origin: 'bottom' });
+    </script>
+</body>
+</html>

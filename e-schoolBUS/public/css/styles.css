@@ -1,0 +1,152 @@
+/* الأنماط العامة */
+body {
+    font-family: Arial, sans-serif;
+    background: url('/images/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    text-align: center;
+    padding-top: 50px;
+}
+
+h1 {
+    color: #ffcc00;
+    margin-bottom: 20px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* الشعار */
+header {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+header img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* أنماط الأقسام */
+#attendanceStatus, #reportsSection, #notificationsSection {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    text-align: left;
+    opacity: 0; /* البدء بالعناصر مخفية */
+    transform: translateY(50px);
+    transition: all 0.5s ease-in-out;
+}
+
+/* أنماط الجدول */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table th, table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+table th {
+    background-color: #ffcc00;
+    color: #333;
+}
+
+table tr:nth-child(even) {
+    background-color: #f3f3f3;
+}
+
+table tr:hover {
+    background-color: #e6e6e6;
+}
+
+/* أنماط الرسم البياني */
+canvas {
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
+    margin-top: 20px;
+}
+
+/* أنماط الإشعارات */
+#notificationsList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#notificationsList li {
+    background-color: rgba(255, 255, 255, 0.9);
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    color: #333;
+}
+
+#notificationsList li:hover {
+    background-color: #ffcc00;
+}
+
+/* أنماط الخريطة */
+#map {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* أنماط الأزرار */
+button {
+    padding: 10px 20px;
+    background-color: #ffcc00;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: transform 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+/* أنماط التنبيهات */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert-error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+/* تأثيرات بصرية */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.reveal {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}

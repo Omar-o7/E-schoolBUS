@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Report - e-schoolBUS</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>Attendance Report</h1>
+
+    <!-- خيارات التصفية -->
+    <div style="margin-bottom: 20px;">
+        <label for="studentFilter">Filter by Student:</label>
+        <input type="text" id="studentFilter" placeholder="Enter student name">
+
+        <label for="dateFilter">Filter by Date:</label>
+        <input type="date" id="dateFilter">
+
+        <button onclick="filterReport()">Apply Filter</button>
+        <button onclick="exportReport()">Export as PDF</button>
+    </div>
+
+    <!-- جدول تقرير الحضور -->
+    <table border="1" id="attendanceTable">
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- يتم ملء هذا القسم ديناميكيًا باستخدام JavaScript -->
+        </tbody>
+    </table>
+
+    <script type="module" src="/js/report.js"></script>
+</body>
+</html>

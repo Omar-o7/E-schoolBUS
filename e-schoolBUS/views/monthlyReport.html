@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Attendance Report - e-schoolBUS</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Monthly Attendance Report</h1>
+
+    <!-- جدول التقرير الشهري -->
+    <table border="1" id="monthlyReportTable">
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Days Present</th>
+                <th>Total Days</th>
+                <th>Attendance Percentage</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- يتم ملء هذا القسم ديناميكيًا باستخدام JavaScript -->
+        </tbody>
+    </table>
+
+    <!-- خيارات الرسم البياني -->
+    <div class="chart-options">
+        <button onclick="changeChartType('bar')">Bar Chart</button>
+        <button onclick="changeChartType('pie')">Pie Chart</button>
+        <button onclick="changeChartType('line')">Line Chart</button>
+    </div>
+
+    <!-- رسم بياني -->
+    <div style="margin-top: 20px;">
+        <canvas id="attendanceChart"></canvas>
+    </div>
+
+    <script type="module" src="/js/monthlyReport.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - e-schoolBUS</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>Admin Panel</h1>
+
+    <!-- نموذج لإضافة سائق -->
+    <h2>Add Driver</h2>
+    <form id="addDriverForm">
+        <input type="text" id="driverName" placeholder="Driver Name" required>
+        <input type="email" id="driverEmail" placeholder="Driver Email" required>
+        <button type="submit">Add Driver</button>
+    </form>
+
+    <!-- نموذج لإضافة طالب -->
+    <h2>Add Student</h2>
+    <form id="addStudentForm">
+        <input type="text" id="studentName" placeholder="Student Name" required>
+        <input type="email" id="studentEmail" placeholder="Parent Email" required>
+        <button type="submit">Add Student</button>
+    </form>
+
+    <!-- قائمة السائقين والطلاب -->
+    <h2>Drivers and Students</h2>
+    <div id="driversList"></div>
+    <div id="studentsList"></div>
+
+    <script type="module" src="/js/admin.js"></script>
+</body>
+</html>
